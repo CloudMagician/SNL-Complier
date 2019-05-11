@@ -26,22 +26,14 @@ A| B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U
 #### SNL编译系统的单词符号分类如下:
 
 * 标识符		  		( ID ) 
-
 * 保留字		  		(它是标识符的子集, if,repeat,read,write，…)
-
 * 无符号整数	  		( INTC )
-
 * 单字符分界符	  	( + , - , * , / , < ,= ,( , ) , [ , ] , . , ; , EOF ,空白字符 )
-
 * 双字符分界符	  	( := )
-
 * 注释头符      		( { )
-
 * 注释结束符			( } )
-
-*  字符起始和结束符	( ‘ )
-
-*  #### 数组下标界限符		( .. )
+* 字符起始和结束符	( ‘ )
+* 数组下标界限符		( .. )
 
 #### 上述各类符号的巴科斯范式如下：
 
@@ -85,6 +77,50 @@ M | N | O | P | Q | R | S | T | U |V | W | X| Y | Z
 
 5．程序体的形式是：以关键字begin开头，关键字end结尾，中间是用分号隔开的语句序列（注意最后一条语句后不加分号），最后用“.”标志程序体的结束。 
 
-### 语法的形式定义
+## 语法正确的代码
 
-下面将用上下文无关文法给出SNL语言的语法。实际上应该把它看成是Token化的语法，因为其中已省略了标识符和整型常数的产生式部分，而且关键字的Token是用相应的大写表示的。
+```pascal
+{实现冒泡排序算法的SNL程序}
+program  bubble
+var  integer  i,j,num;
+     array [1..20] of integer  a;
+
+procedure  q(integer num);
+var  integer i,j,k;
+     integer t;
+begin
+  i:=1;
+   while i < num do
+     j:=num-i+1;
+     k:=1;
+     while k<j  do
+    	if a[k+1] < a[k]  
+then   
+	t:=a[k];
+		a[k]:=a[k+1];
+		a[k+1]:=t
+         else  temp:=0
+         fi;   
+     k:=k+1
+     endwh;
+  i:=i+1
+  endwh
+end
+
+begin
+   read(num);
+   i:=1;
+   while i<(num+1)  do
+     read(j);
+     a[i]:=j;
+     i:=i+1
+   endwh;
+   q(num);
+   i:=1;
+   while  i<(num+1) do 
+       write(a[i]);
+       i:=i+1
+   endwh
+end.
+```
+

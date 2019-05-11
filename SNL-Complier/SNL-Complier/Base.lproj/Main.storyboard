@@ -30,18 +30,30 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7t4-fM-Vpx">
                                                         <rect key="frame" x="0.0" y="0.0" width="86" height="30"/>
                                                         <state key="normal" title="词法定义"/>
+                                                        <connections>
+                                                            <action selector="Button1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H3K-zO-3I9"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0l-mv-6UE">
                                                         <rect key="frame" x="96" y="0.0" width="86" height="30"/>
                                                         <state key="normal" title="语法定义"/>
+                                                        <connections>
+                                                            <action selector="Button2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fSl-WI-OGI"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJB-sl-MsL">
                                                         <rect key="frame" x="192" y="0.0" width="86" height="30"/>
                                                         <state key="normal" title="代码描述"/>
+                                                        <connections>
+                                                            <action selector="Button3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Zc-HI-kkS"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBH-hr-bah">
                                                         <rect key="frame" x="288" y="0.0" width="86" height="30"/>
                                                         <state key="normal" title="词法分析"/>
+                                                        <connections>
+                                                            <action selector="Button4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w8N-14-sH2"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <variation key="heightClass=compact-widthClass=compact" axis="vertical"/>
@@ -54,18 +66,30 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5q-MN-v3T">
                                                         <rect key="frame" x="0.0" y="0.0" width="86" height="30"/>
                                                         <state key="normal" title="语法分析"/>
+                                                        <connections>
+                                                            <action selector="Button5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cw2-5T-R7Q"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUu-GL-hsX">
                                                         <rect key="frame" x="96" y="0.0" width="86" height="30"/>
                                                         <state key="normal" title="语义分析"/>
+                                                        <connections>
+                                                            <action selector="Button6:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O6N-gh-88N"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnf-Ly-fYu">
                                                         <rect key="frame" x="192" y="0.0" width="86" height="30"/>
                                                         <state key="normal" title="中间代码"/>
+                                                        <connections>
+                                                            <action selector="Button7:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V53-PB-tv6"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZN1-dv-Tun">
                                                         <rect key="frame" x="288" y="0.0" width="86" height="30"/>
                                                         <state key="normal" title="目标代码"/>
+                                                        <connections>
+                                                            <action selector="Button8:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PZU-a6-N8x"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <variation key="heightClass=compact-widthClass=compact" axis="vertical"/>
