@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_5" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,13 +15,13 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SNL_Complier" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rq3-w3-hJv">
-                                <rect key="frame" x="20" y="64" width="374" height="778"/>
+                                <rect key="frame" x="20" y="40" width="374" height="676"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9xQ-ok-Hg4">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9xQ-ok-Hg4" userLabel="Button Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="saN-Mz-2To">
@@ -44,6 +44,7 @@
                                                         <state key="normal" title="词法分析"/>
                                                     </button>
                                                 </subviews>
+                                                <variation key="heightClass=compact-widthClass=compact" axis="vertical"/>
                                                 <variation key="heightClass=compact-widthClass=regular" axis="vertical"/>
                                                 <variation key="heightClass=regular-widthClass=compact" spacing="10"/>
                                             </stackView>
@@ -67,15 +68,34 @@
                                                         <state key="normal" title="目标代码"/>
                                                     </button>
                                                 </subviews>
+                                                <variation key="heightClass=compact-widthClass=compact" axis="vertical"/>
                                                 <variation key="heightClass=compact-widthClass=regular" axis="vertical"/>
                                                 <variation key="heightClass=regular-widthClass=compact" spacing="10"/>
                                             </stackView>
                                         </subviews>
+                                        <variation key="heightClass=regular-widthClass=regular" axis="horizontal"/>
                                     </stackView>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cE3-Dg-zok">
-                                        <rect key="frame" x="0.0" y="70" width="374" height="708"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="dbs-hf-Poc">
+                                        <rect key="frame" x="0.0" y="70" width="374" height="606"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" indicatorStyle="white" bouncesZoom="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rst-jb-yVE">
+                                                <rect key="frame" x="0.0" y="0.0" width="444" height="212"/>
+                                                <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <mutableString key="text">SNL(Small Nested Language)语言是我们自行定义的教学模型语言， 它是一种类PASCAL的“高级”程序设计语言。 SNL语言的数据结构比较丰富，除了整型、字符型等简单数据类型外， 还有数组、记录等结构数据类型，过程允许嵌套定义，允许递归调用。 SNL语言基本上包含了高级程序设计语言的所有常用的成分， 具备了高级程序设计语言的基本特征，实现SNL的编译器， 可以涉及到绝大多数编译技术。通过对SNL语言编译程序的学习， 我们可以更加深入更加全面的掌握编译程序的构造原理。 但为了教学方便起见，略去了高级程序设计语言的一些复杂成分， 如文件、集合、指针的操作等。</mutableString>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Rst-jb-yVE" firstAttribute="top" secondItem="dbs-hf-Poc" secondAttribute="top" id="23v-Tw-BKj"/>
+                                            <constraint firstAttribute="bottom" secondItem="Rst-jb-yVE" secondAttribute="bottom" id="5yq-jT-SNN"/>
+                                            <constraint firstAttribute="trailing" secondItem="Rst-jb-yVE" secondAttribute="trailing" id="PcM-u2-8ME"/>
+                                            <constraint firstItem="Rst-jb-yVE" firstAttribute="leading" secondItem="dbs-hf-Poc" secondAttribute="leading" id="d4a-Pz-nu3"/>
+                                        </constraints>
                                     </scrollView>
                                 </subviews>
+                                <variation key="heightClass=compact-widthClass=compact" axis="horizontal"/>
                                 <variation key="heightClass=compact-widthClass=regular" axis="horizontal"/>
                             </stackView>
                         </subviews>
@@ -88,10 +108,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="ScrollView" destination="dbs-hf-Poc" id="Th2-Yq-gdb"/>
+                        <outlet property="TextView" destination="Rst-jb-yVE" id="l1T-8T-Vwe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="47.826086956521742" y="20.758928571428569"/>
+            <point key="canvasLocation" x="47.826086956521742" y="20.380434782608699"/>
         </scene>
     </scenes>
 </document>
