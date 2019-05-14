@@ -9,12 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    var tempText = ""
+    var codes = ""
+    var Tokens = [Token]()
+    
     @IBOutlet weak var ScrollView: UIScrollView!
     @IBOutlet weak var TextView: UITextView!
     
     @IBAction func Button1(_ sender: UIButton) {
-        TextView.text = """
+        tempText = """
         SNL编译系统的单词符号分类如下：
         - 标识符：\t\t\t( ID )
         - 保留字：\t\t\t(它是标识符的子集, if,repeat,read,write，…)
@@ -26,10 +30,11 @@ class ViewController: UIViewController {
         - 字符起始和结束符：\t( ‘ )
         - 数组下标界限符：\t( .. )
         """
+        TextView.text = tempText
     }
     
     @IBAction func Button2(_ sender: UIButton) {
-        TextView.text = """
+        tempText = """
         语法的非形式说明：
         一个SNL程序是由程序头、声明部分和程序体组成的。
         声明部分包括类型声明、变量声明和过程声明。
@@ -46,10 +51,11 @@ class ViewController: UIViewController {
         5．程序体的形式是：\t\t以关键字begin开头，关键字end结尾，中间是用分号隔开的语句序列（注意最后一条语句后不加分号），
         \t\t\t\t\t\t最后用“.”标志程序体的结束。
         """
+        TextView.text = tempText
     }
     
     @IBAction func Button3(_ sender: UIButton) {
-        TextView.text = """
+        codes = """
         {实现冒泡排序算法的SNL程序}
         program bubble
         var integer i,j,num;
@@ -94,9 +100,19 @@ class ViewController: UIViewController {
             endwh
         end.
         """
+        TextView.text = codes
     }
     
     @IBAction func Button4(_ sender: UIButton) {
+        let lex = LexcialAnalyzer()
+        lex.scan(codes)
+        Tokens = lex.showTokens()
+        tempText = "type | data | line | column\n"
+        for token in Tokens {
+            tempText.append(token.type.rawValue)
+            tempText += " | \(token.data) | \(token.line) | \(token.column)\n"
+        }
+        TextView.text = tempText
     }
     
     @IBAction func Button5(_ sender: UIButton) {

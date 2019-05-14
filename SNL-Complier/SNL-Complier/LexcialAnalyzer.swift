@@ -10,7 +10,7 @@ import Foundation
 
 
 // Token全类型
-enum lexcialType {
+enum lexcialType : String {
     // 特殊单词符号
     case ENDFILE
     case ERROR
@@ -135,7 +135,6 @@ class LexcialAnalyzer {
     
     // Tokens
     var Tokens = [Token]()
-    
     
     // 去掉注释
     func removeComments(_ codes: String) -> String {
@@ -293,5 +292,9 @@ class LexcialAnalyzer {
                 }
             }
         }
+    }
+    
+    func showTokens() -> [Token] {
+        return Tokens
     }
 }
