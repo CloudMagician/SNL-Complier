@@ -50,7 +50,7 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBH-hr-bah">
                                                         <rect key="frame" x="288" y="0.0" width="86" height="30"/>
-                                                        <state key="normal" title="集合求解"/>
+                                                        <state key="normal" title="文法规则"/>
                                                         <connections>
                                                             <action selector="Button4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w8N-14-sH2"/>
                                                         </connections>
