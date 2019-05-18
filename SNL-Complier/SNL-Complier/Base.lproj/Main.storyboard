@@ -65,21 +65,21 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5q-MN-v3T">
                                                         <rect key="frame" x="0.0" y="0.0" width="86" height="30"/>
-                                                        <state key="normal" title="语法分析"/>
+                                                        <state key="normal" title="Predict集"/>
                                                         <connections>
                                                             <action selector="Button5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cw2-5T-R7Q"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUu-GL-hsX">
                                                         <rect key="frame" x="96" y="0.0" width="86" height="30"/>
-                                                        <state key="normal" title="语义分析"/>
+                                                        <state key="normal" title="语法分析"/>
                                                         <connections>
                                                             <action selector="Button6:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O6N-gh-88N"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnf-Ly-fYu">
                                                         <rect key="frame" x="192" y="0.0" width="86" height="30"/>
-                                                        <state key="normal" title="中间代码"/>
+                                                        <state key="normal" title="语义分析"/>
                                                         <connections>
                                                             <action selector="Button7:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V53-PB-tv6"/>
                                                         </connections>
