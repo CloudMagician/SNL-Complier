@@ -17,6 +17,7 @@
 		B0198B80228B16E60023A02E /* MyTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0198B7F228B16E60023A02E /* MyTools.swift */; };
 		B02E2422228FE1D200D303E7 /* PredictSetCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02E2421228FE1D200D303E7 /* PredictSetCalculation.swift */; };
 		B0CFB8372282ABD80004DEA4 /* LexcialAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CFB8362282ABD80004DEA4 /* LexcialAnalyzer.swift */; };
+		B0D27AD322916E9C003AEE88 /* TypeDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D27AD222916E9C003AEE88 /* TypeDefinition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		B0198B7F228B16E60023A02E /* MyTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTools.swift; sourceTree = "<group>"; };
 		B02E2421228FE1D200D303E7 /* PredictSetCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictSetCalculation.swift; sourceTree = "<group>"; };
 		B0CFB8362282ABD80004DEA4 /* LexcialAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexcialAnalyzer.swift; sourceTree = "<group>"; };
+		B0D27AD222916E9C003AEE88 /* TypeDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDefinition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				B00891B222825AD400888484 /* Assets.xcassets */,
 				B00891B422825AD400888484 /* LaunchScreen.storyboard */,
 				B00891B722825AD400888484 /* Info.plist */,
+				B0D27AD222916E9C003AEE88 /* TypeDefinition.swift */,
 				B0CFB8362282ABD80004DEA4 /* LexcialAnalyzer.swift */,
 				B02E2421228FE1D200D303E7 /* PredictSetCalculation.swift */,
 				B0198B7F228B16E60023A02E /* MyTools.swift */,
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B00891AE22825AD300888484 /* ViewController.swift in Sources */,
+				B0D27AD322916E9C003AEE88 /* TypeDefinition.swift in Sources */,
 				B00891AC22825AD300888484 /* AppDelegate.swift in Sources */,
 				B02E2422228FE1D200D303E7 /* PredictSetCalculation.swift in Sources */,
 				B0CFB8372282ABD80004DEA4 /* LexcialAnalyzer.swift in Sources */,

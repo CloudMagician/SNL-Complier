@@ -226,11 +226,11 @@ class ViewController: UIViewController {
         ProductionList = predictCalculation.showProductionList()
         PredictSet = predictCalculation.showPredictSet()
         
-        tempText = "\(MyTools.showTable(text: "NUMBER"))\(MyTools.showTable(text: "PRODUCTION"))PREDICTSET\n"
+        tempText = "ID\t\(MyTools.showTable(text: "PRODUCTION"))PREDICTSET\n"
         for (i,predict) in PredictSet.sorted(by: {$0.0 < $1.0}).enumerated() {
             tempText += "\(i+1):\t"
-            tempText += "\(MyTools.showTable(text: ProductionList[i].productionLeft))->"
-            tempText += "\(ProductionList[i].productionRight)"
+            tempText += "\(ProductionList[i].productionLeft)->"
+            tempText += "\(ProductionList[i].productionRight)\t"
             tempText += "\(predict.value)\n"
         }
         TextView.text = tempText

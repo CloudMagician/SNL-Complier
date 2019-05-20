@@ -8,16 +8,6 @@
 
 import Foundation
 
-struct Production {
-    var productionLeft = ""
-    var productionRight = [String]()
-    
-    init(productionLeft : String, productionRight : [String]) {
-        self.productionLeft = productionLeft
-        self.productionRight = productionRight
-    }
-}
-
 class PredictSetCalculation {
     let null = "ε"  //空的表示方式
     
@@ -47,6 +37,10 @@ class PredictSetCalculation {
             }
             words.remove(at: 0)
             productionList.append(Production.init(productionLeft: leftText, productionRight: words))
+        }
+        
+        if productionList.count < 1 {
+            return
         }
         
         leftText = productionList.first!.productionLeft
@@ -158,11 +152,9 @@ class PredictSetCalculation {
             }
             if set.contains(null) {
                 set.remove(null)
-                predictSet[index]! = predictSet[index]!.union(set)
                 predictSet[index]! = predictSet[index]!.union(followSet[production.productionLeft]!)
-            } else {
-                predictSet[index]! = predictSet[index]!.union(set)
             }
+            predictSet[index]! = predictSet[index]!.union(set)
         }
     }
     
@@ -172,5 +164,15 @@ class PredictSetCalculation {
     
     func showPredictSet() -> [Int : Set<String>] {
         return predictSet
+    }
+    
+    func showTable() -> [[Int]] {
+        var result : [[Int]] = [[Int]](repeating: [Int](repeating: 666, count: productionList.count), count: lexcialType.count)
+        for (i, set) in predictSet {
+            for p in set {
+                result[productionList[i].productionLeft][lexcialType.init(rawValue: p)!.hashValue] = i
+            }
+        }
+        return result
     }
 }
