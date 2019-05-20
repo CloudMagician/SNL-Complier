@@ -89,67 +89,67 @@ class ViewController: UIViewController {
     
     @IBAction func Button4(_ sender: UIButton) {
         grammarRules = """
-        Program         ::= ProgramHead DeclarePart ProgramBody .
+        Program         ::= ProgramHead DeclarePart ProgramBody DOT
         
         ProgramHead     ::= PROGRAM ProgramName
         ProgramName     ::= ID
-
+        
         DeclarePart     ::= TypeDecpart VarDecpart ProcDecpart
         
         TypeDecpart     ::= ε
-                        |   TypeDec
+        |   TypeDec
         TypeDec         ::= TYPE TypeDecList
-        TypeDecList     ::= TypeId = TypeDef ; TypeDecMore
+        TypeDecList     ::= TypeId EQ TypeDef SEMI TypeDecMore
         TypeDecMore     ::= ε
-                        |   TypeDecList
+        |   TypeDecList
         TypeId          ::= ID
         
         TypeDef         ::= BaseType
-                        |   StructureType
-                        |   ID
+        |   StructureType
+        |   ID
         BaseType        ::= INTEGER
-                        |   CHAR
+        |   CHAR
         StructureType   ::= ArrayType
-                        |   RecType
-        ArrayType       ::= ARRAY [ low .. top ] OF BaseType
+        |   RecType
+        ArrayType       ::= ARRAY LMIDPAREN low UNDERANGE top RMIDPAREN OF BaseType
         Low             ::= INTC
         Top             ::= INTC
         RecType         ::= RECORD FieldDecList END
-        FieldDecList    ::= BaseType IdList ; FieldDecMore
-                        |   ArrayType IdList ; FieldDecMore
+        FieldDecList    ::= BaseType IdList SEMI FieldDecMore
+        |   ArrayType IdList SEMI FieldDecMore
         FieldDecMore    ::= ε
-                        |   FieldDecList
+        |   FieldDecList
         IdList          ::= ID IdMore
         IdMore          ::= ε
-                        |   , IdList
-
+        |   COMMA IdList
+        
         VarDecpart      ::= ε
-                        |   VarDec
+        |   VarDec
         VarDec          ::= VAR VarDecList
-        VarDecList      ::= TypeDef VarIdList ; VarDecMore
+        VarDecList      ::= TypeDef VarIdList SEMI VarDecMore
         VarDecMore      ::= ε
-                        |   VarDecList
+        |   VarDecList
         VarIdList       ::= ID VarIdMore
         VarIdMore       ::= ε
-                        |   , VarIdList
+        |   COMMA VarIdList
         
         ProcDecpart     ::= ε
-                        |   ProcDec
-        ProcDec         ::= PROCEDURE ProcName ( ParamList ) ; ProcDecPart ProcBody ProcDecMore
+        |   ProcDec
+        ProcDec         ::= PROCEDURE ProcName LPAREN ParamList RPAREN SEMI ProcDecPart ProcBody ProcDecMore
         ProcDecMore     ::= ε
-                        |   ProcDec
+        |   ProcDec
         ProcName        ::= ID
         
         ParamList       ::= ε
-                        |   ParamDecList
+        |   ParamDecList
         ParamDecList    ::= Param ParamMore
         ParamMore       ::= ε
-                        |   ; ParamDecList
+        |   SEMI ParamDecList
         Param           ::= TypeDef FormList
-                        |   VAR TypeDef FormList
+        |   VAR TypeDef FormList
         FormList        ::= ID FidMore
         FidMore         ::= ε
-                        |   , FormList
+        |   COMMA FormList
         
         ProcDecPart     ::= DeclarePart
         
@@ -159,63 +159,63 @@ class ViewController: UIViewController {
         
         StmList         ::= Stm StmMore
         StmMore         ::= ε
-                        |   ; StmList
+        |   SEMI StmList
         
         Stm             ::= ConditionalStm
-                        |   LoopStm
-                        |   InputStm
-                        |   OutputStm
-                        |   ReturnStm
-                        |   ID AssCall
+        |   LoopStm
+        |   InputStm
+        |   OutputStm
+        |   ReturnStm
+        |   ID AssCall
         
         AssCall         ::= AssignmentRest
-                        |   CallStmRest
+        |   CallStmRest
         
-        AssignmentRest  ::= VariMore := Exp
+        AssignmentRest  ::= VariMore ASSIGN Exp
         
         ConditionalStm  ::= IF RelExp THEN StmList ELSE StmList FI
         LoopStm         ::= WHILE RelExp DO StmList ENDWH
-        InputStm        ::= READ ( Invar )
+        InputStm        ::= READ LPAREN Invar RPAREN
         Invar           ::= ID
-        OutputStm       ::= WRITE ( Exp )
+        OutputStm       ::= WRITE LPAREN Exp RPAREN
         ReturnStm       ::= RETURN
         
-        CallStmRest     ::= ( ActParamList )
+        CallStmRest     ::= LPAREN ActParamList RPAREN
         ActParamList    ::= ε
-                        |   Exp ActParamMore
+        |   Exp ActParamMore
         ActParamMore    ::= ε
-                        |   , ActParamList
+        |   COMMA ActParamList
         
         RelExp          ::= Exp OtherRelE
         OtherRelE       ::= CmpOp Exp
         
         Exp             ::= Term OtherTerm
         OtherTerm       ::= ε
-                        |   AddOp Exp
+        |   AddOp Exp
         
         Term            ::= Factor OtherFactor
         OtherFactor     ::= ε
-                        |   MultOp Term
+        |   MultOp Term
         
-        Factor          ::= ( Exp )
-                        |   INTC
-                        |   Variable
+        Factor          ::= LPAREN Exp RPAREN
+        |   INTC
+        |   Variable
         Variable        ::= ID VariMore
         VariMore        ::= ε
-                        |   [ Exp ]
-                        |   . FieldVar
+        |   LMIDPAREN Exp RMIDPAREN
+        |   DOT FieldVar
         FieldVar        ::= ID FieldVarMore
         FieldVarMore    ::= ε
-                        |   [ Exp ]
+        |   LMIDPAREN Exp RMIDPAREN
         
-        CmpOp           ::= <
-                        |   =
+        CmpOp           ::= LT
+        |   EQ
         
-        AddOp           ::= +
-                        |   -
+        AddOp           ::= PLUS
+        |   MINUS
         
-        MultOp          ::= *
-                        |   /
+        MultOp          ::= TIMES
+        |   OVER
         """
         TextView.text = grammarRules
     }
@@ -226,7 +226,7 @@ class ViewController: UIViewController {
         tempText = ""
         for line in LLTable {
             for word in line {
-                tempText += String(word) + "\t"
+                tempText += String(word) + "|"
             }
             tempText += "\n"
         }
@@ -291,4 +291,3 @@ class ViewController: UIViewController {
         self.ScrollView.contentSize = self.TextView.bounds.size
     }
 }
-

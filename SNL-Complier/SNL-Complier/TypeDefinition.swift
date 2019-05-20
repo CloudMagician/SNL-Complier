@@ -10,7 +10,7 @@ import Foundation
 
 // 词法
 // Token全类型
-enum lexcialType : String {
+enum lexcialType : String, CaseIterable {
     // 特殊单词符号
     case ENDFILE
     case ERROR
@@ -26,16 +26,16 @@ enum lexcialType : String {
     case WHILE
     case DO
     case ENDWH
-    case BEGIN1
-    case END1
+    case BEGIN
+    case END
     case READ
     case WRITE
     case ARRAY
     case OF
     case RECORD
-    case RETURN1
+    case RETURN
     case INTEGER
-    case CHAR1
+    case CHAR
     // 多字符单词
     case ID
     case INTC
@@ -57,10 +57,6 @@ enum lexcialType : String {
     case LMIDPAREN
     case RMIDPAREN
     case UNDERANGE
-    
-    static var count: Int {
-        return lexcialType.UNDERANGE.hashValue + 1
-    }
 }
 
 // Token结构
@@ -91,16 +87,16 @@ let reservedWord:[String:lexcialType] = [
     "while":    .WHILE,
     "do":       .DO,
     "endwh":    .ENDWH,
-    "begin":    .BEGIN1,
-    "end":      .END1,
+    "begin":    .BEGIN,
+    "end":      .END,
     "read":     .READ,
     "write":    .WRITE,
     "array":    .ARRAY,
     "of":       .OF,
     "record":   .RECORD,
-    "return":   .RETURN1,
+    "return":   .RETURN,
     "integer":  .INTEGER,
-    "char":     .CHAR1
+    "char":     .CHAR
 ]
 
 // 符号查找

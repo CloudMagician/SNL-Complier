@@ -169,10 +169,10 @@ class PredictSetCalculation {
     }
     
     func showTable() -> [[Int]] {
-        var result : [[Int]] = [[Int]](repeating: [Int](repeating: 666, count: productionList.count), count: lexcialType.count)
+        var result : [[Int]] = [[Int]](repeating: [Int](repeating: 0, count: nonTerminalSet.count), count: lexcialType.allCases.count)
         for (i, set) in predictSet {
             for p in set {
-                result[nonTerminalSet.firstIndex(of: productionList[i].productionLeft)!][lexcialType.init(rawValue: p)!.hashValue] = i
+                result[lexcialType.allCases.firstIndex(of: lexcialType.init(rawValue: p)!)!][nonTerminalSet.firstIndex(of: productionList[i].productionLeft)!] = i + 1
             }
         }
         return result
