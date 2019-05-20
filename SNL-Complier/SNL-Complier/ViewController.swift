@@ -15,8 +15,7 @@ class ViewController: UIViewController {
     var grammarRules = ""
     var tempText = ""
     var Tokens = [Token]()
-    var ProductionList = [Production]()
-    var PredictSet = [Int : Set<String>]()
+    var LLTable = [[Int]]()
     
     @IBOutlet weak var ScrollView: UIScrollView!
     @IBOutlet weak var TextView: UITextView!
@@ -223,15 +222,13 @@ class ViewController: UIViewController {
     
     @IBAction func Button5(_ sender: UIButton) {
         let predictCalculation = PredictSetCalculation.init(text: grammarRules)
-        ProductionList = predictCalculation.showProductionList()
-        PredictSet = predictCalculation.showPredictSet()
-        
-        tempText = "ID\t\(MyTools.showTable(text: "PRODUCTION"))PREDICTSET\n"
-        for (i,predict) in PredictSet.sorted(by: {$0.0 < $1.0}).enumerated() {
-            tempText += "\(i+1):\t"
-            tempText += "\(ProductionList[i].productionLeft)->"
-            tempText += "\(ProductionList[i].productionRight)\t"
-            tempText += "\(predict.value)\n"
+        LLTable = predictCalculation.showTable()
+        tempText = ""
+        for line in LLTable {
+            for word in line {
+                tempText += String(word) + "\t"
+            }
+            tempText += "\n"
         }
         TextView.text = tempText
     }

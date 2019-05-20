@@ -12,7 +12,7 @@ class PredictSetCalculation {
     let null = "ε"  //空的表示方式
     
     var productionList = [Production]()
-    var nonTerminalSet = Set<String>()
+    var nonTerminalSet = [String]()
     var firstSet = [String : Set<String>]()
     var followSet = [String : Set<String>]()
     var predictSet = [Int : Set<String>]()
@@ -30,7 +30,9 @@ class PredictSetCalculation {
             words = words.filter{$0 != " " && $0 != ""} //闭包，去掉空格
             if words.contains("::=") {
                 leftText = words[0]
-                nonTerminalSet.insert(leftText)
+                if !nonTerminalSet.contains(leftText) {
+                    nonTerminalSet.append(leftText)
+                }
                 firstSet.updateValue(Set<String>(), forKey: leftText)
                 followSet.updateValue(Set<String>(), forKey: leftText)
                 words = words.filter{$0 != "::="}
@@ -170,7 +172,7 @@ class PredictSetCalculation {
         var result : [[Int]] = [[Int]](repeating: [Int](repeating: 666, count: productionList.count), count: lexcialType.count)
         for (i, set) in predictSet {
             for p in set {
-                result[productionList[i].productionLeft][lexcialType.init(rawValue: p)!.hashValue] = i
+                result[nonTerminalSet.firstIndex(of: productionList[i].productionLeft)!][lexcialType.init(rawValue: p)!.hashValue] = i
             }
         }
         return result
