@@ -1,0 +1,127 @@
+Program         ::= ProgramHead DeclarePart ProgramBody
+
+ProgramHead     ::= PROGRAM ProgramName
+ProgramName     ::= ID
+
+DeclarePart     ::= TypeDec VarDec ProcDec
+
+TypeDec         ::= ε
+                |   TypeDeclaration
+TypeDeclaration ::= TYPE TypeDecList
+TypeDecList     ::= TypeId EQ TypeName SEMI TypeDecMore
+TypeDecMore     ::= ε
+                |   TypeDecList
+TypeId          ::= ID
+
+TypeName        ::= BaseType
+                |   StructureType
+                |   ID
+BaseType        ::= INTEGER
+                |   CHAR
+StructureType   ::= ArrayType
+                |   RecType
+ArrayType       ::= ARRAY LMIDPAREN Low UNDERANGE Top RMIDPAREN OF BaseType
+Low             ::= INTC
+Top             ::= INTC
+RecType         ::= RECORD FieldDecList END
+FieldDecList    ::= BaseType IdList SEMI FieldDecMore
+                |   ArrayType IdList SEMI FieldDecMore
+FieldDecMore    ::= ε
+                |   FieldDecList
+IdList          ::= ID IdMore
+IdMore          ::= ε
+                |   COMMA IdList
+
+VarDec          ::= ε
+                |   VarDeclaration
+VarDeclaration  ::= VAR VarDecList
+VarDecList      ::= TypeName VarIdList SEMI VarDecMore
+VarDecMore      ::= ε
+                |   VarDecList
+VarIdList       ::= ID VarIdMore
+VarIdMore       ::= ε
+                |   COMMA VarIdList
+
+ProcDec         ::= ε
+                |   ProcDeclaration
+ProcDeclaration ::= PROCEDURE ProcName LPAREN ParamList RPAREN SEMI ProcDecPart ProcBody ProcDecMore
+ProcDecMore     ::= ε
+                |   ProcDeclaration
+ProcName        ::= ID
+
+ParamList       ::= ε
+                |   ParamDecList
+ParamDecList    ::= Param ParamMore
+ParamMore       ::= ε
+                |   SEMI ParamDecList
+Param           ::= TypeName FormList
+                |   VAR TypeName FormList
+FormList        ::= ID FidMore
+FidMore         ::= ε
+                |   COMMA FormList
+
+ProcDecPart     ::= DeclarePart
+
+ProcBody        ::= ProgramBody
+
+ProgramBody     ::= BEGIN StmList END
+
+StmList         ::= Stm StmMore
+StmMore         ::= ε
+                |   SEMI StmList
+
+Stm             ::= ConditionalStm
+                |   LoopStm
+                |   InputStm
+                |   OutputStm
+                |   ReturnStm
+                |   ID AssCall
+
+AssCall         ::= AssignmentRest
+                |   CallStmRest
+
+AssignmentRest  ::= VariMore ASSIGN Exp
+
+ConditionalStm  ::= IF RelExp THEN StmList ELSE StmList FI
+LoopStm         ::= WHILE RelExp DO StmList ENDWH
+InputStm        ::= READ LPAREN Invar RPAREN
+Invar           ::= ID
+OutputStm       ::= WRITE LPAREN Exp RPAREN
+ReturnStm       ::= RETURN LPAREN Exp RPAREN
+
+CallStmRest     ::= LPAREN ActParamList RPAREN
+ActParamList    ::= ε
+                |   Exp ActParamMore
+ActParamMore    ::= ε
+                |   COMMA ActParamList
+
+RelExp          ::= Exp OtherRelE
+OtherRelE       ::= CmpOp Exp
+
+Exp             ::= Term OtherTerm
+OtherTerm       ::= ε
+                |   AddOp Exp
+
+Term            ::= Factor OtherFactor
+OtherFactor     ::= ε
+                |   MultOp Term
+
+Factor          ::= LPAREN Exp RPAREN
+                |   INTC
+                |   Variable
+Variable        ::= ID VariMore
+VariMore        ::= ε
+                |   LMIDPAREN Exp RMIDPAREN
+                |   DOT FieldVar
+FieldVar        ::= ID FieldVarMore
+FieldVarMore    ::= ε
+                |   LMIDPAREN Exp RMIDPAREN
+
+CmpOp           ::= LT
+                |   EQ
+
+AddOp           ::= PLUS
+                |   MINUS
+
+MultOp          ::= TIMES
+                |   OVER

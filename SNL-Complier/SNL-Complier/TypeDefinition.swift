@@ -8,9 +8,58 @@
 
 import Foundation
 
-// 词法
-// Token全类型
-enum lexcialType : String, CaseIterable {
+// 终极符全类型
+enum TerminalType : String, CaseIterable {
+    // 特殊单词符号
+    case ENDFILE
+    case ERROR
+    // 保留字
+    case PROGRAM
+    case PROCEDURE
+    case TYPE
+    case VAR
+    case IF
+    case THEN
+    case ELSE
+    case FI
+    case WHILE
+    case DO
+    case ENDWH
+    case BEGIN
+    case END
+    case READ
+    case WRITE
+    case ARRAY
+    case OF
+    case RECORD
+    case RETURN
+    case INTEGER
+    case CHAR
+    // 多字符单词
+    case ID
+    case INTC
+    case CHARC
+    // 符号
+    case ASSIGN
+    case EQ
+    case LT
+    case PLUS
+    case MINUS
+    case TIMES
+    case OVER
+    case LPAREN
+    case RPAREN
+    case DOT
+    case COLON
+    case SEMI
+    case COMMA
+    case LMIDPAREN
+    case RMIDPAREN
+    case UNDERANGE
+}
+
+// 非终极符全类型
+enum NonTerminalType : String, CaseIterable {
     // 特殊单词符号
     case ENDFILE
     case ERROR
@@ -61,12 +110,12 @@ enum lexcialType : String, CaseIterable {
 
 // Token结构
 struct Token{
-    var type: lexcialType
+    var type: TerminalType
     var data: String
     var line: Int
     var column: Int
     
-    init(type: lexcialType, data: String, line: Int, column : Int) {
+    init(type: TerminalType, data: String, line: Int, column : Int) {
         self.type = type
         self.data = data
         self.line = line
@@ -75,7 +124,7 @@ struct Token{
 }
 
 // 保留字查找
-let reservedWord:[String:lexcialType] = [
+let reservedWord:[String:TerminalType] = [
     "program":  .PROGRAM,
     "procedure":.PROCEDURE,
     "type":     .TYPE,
@@ -100,7 +149,7 @@ let reservedWord:[String:lexcialType] = [
 ]
 
 // 符号查找
-let symbolWord:[Character:lexcialType] = [
+let symbolWord:[Character:TerminalType] = [
     "=":.EQ,
     "<":.LT,
     "+":.PLUS,
@@ -115,18 +164,17 @@ let symbolWord:[Character:lexcialType] = [
     ",":.COMMA,
     "[":.LMIDPAREN,
     "]":.RMIDPAREN,
-    //    ":=":lexcialType.ASSIGN,
-    //    "..":lexcialType.UNDERANGE
+    //    ":=":TerminalType.ASSIGN,
+    //    "..":TerminalType.UNDERANGE
 ]
 
 // 类型判别
-let discriminateType:[String:lexcialType] = [
+let discriminateType:[String:TerminalType] = [
     "\\d+":         .INTC,
     "\'.{1}\'":     .CHARC,
     "[a-zA-Z_][a-zA-Z_0-9]*":.ID
 ]
 
-// 文法规则
 // 产生式
 struct Production {
     var productionLeft = ""
