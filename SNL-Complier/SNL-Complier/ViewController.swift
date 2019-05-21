@@ -226,7 +226,7 @@ class ViewController: UIViewController {
         tempText = ""
         for line in LLTable {
             for word in line {
-                tempText += String(word) + "|"
+                tempText += String(word) + "\t"
             }
             tempText += "\n"
         }
