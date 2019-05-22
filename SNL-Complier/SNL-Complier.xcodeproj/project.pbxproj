@@ -16,6 +16,7 @@
 		B00891CC22825AD500888484 /* SNL_ComplierUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00891CB22825AD500888484 /* SNL_ComplierUITests.swift */; };
 		B0198B80228B16E60023A02E /* MyTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0198B7F228B16E60023A02E /* MyTools.swift */; };
 		B02E2422228FE1D200D303E7 /* PredictSetCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02E2421228FE1D200D303E7 /* PredictSetCalculation.swift */; };
+		B04D1A6622951E3C00C85AD1 /* SyntaxParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D1A6522951E3C00C85AD1 /* SyntaxParser.swift */; };
 		B0CFB8372282ABD80004DEA4 /* LexcialAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CFB8362282ABD80004DEA4 /* LexcialAnalyzer.swift */; };
 		B0D27AD322916E9C003AEE88 /* TypeDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D27AD222916E9C003AEE88 /* TypeDefinition.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		B00891CD22825AD500888484 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0198B7F228B16E60023A02E /* MyTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTools.swift; sourceTree = "<group>"; };
 		B02E2421228FE1D200D303E7 /* PredictSetCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictSetCalculation.swift; sourceTree = "<group>"; };
+		B04D1A6522951E3C00C85AD1 /* SyntaxParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntaxParser.swift; sourceTree = "<group>"; };
 		B0CFB8362282ABD80004DEA4 /* LexcialAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexcialAnalyzer.swift; sourceTree = "<group>"; };
 		B0D27AD222916E9C003AEE88 /* TypeDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDefinition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +116,7 @@
 				B0D27AD222916E9C003AEE88 /* TypeDefinition.swift */,
 				B0CFB8362282ABD80004DEA4 /* LexcialAnalyzer.swift */,
 				B02E2421228FE1D200D303E7 /* PredictSetCalculation.swift */,
+				B04D1A6522951E3C00C85AD1 /* SyntaxParser.swift */,
 				B0198B7F228B16E60023A02E /* MyTools.swift */,
 			);
 			path = "SNL-Complier";
@@ -272,6 +275,7 @@
 				B0D27AD322916E9C003AEE88 /* TypeDefinition.swift in Sources */,
 				B00891AC22825AD300888484 /* AppDelegate.swift in Sources */,
 				B02E2422228FE1D200D303E7 /* PredictSetCalculation.swift in Sources */,
+				B04D1A6622951E3C00C85AD1 /* SyntaxParser.swift in Sources */,
 				B0CFB8372282ABD80004DEA4 /* LexcialAnalyzer.swift in Sources */,
 				B0198B80228B16E60023A02E /* MyTools.swift in Sources */,
 			);

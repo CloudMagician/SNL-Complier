@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var grammarRules = ""
     var tempText = ""
     var Tokens = [Token]()
+    var ProductionList = [Production]()
     var LLTable = [[Int]]()
     
     @IBOutlet weak var ScrollView: UIScrollView!
@@ -89,29 +90,29 @@ class ViewController: UIViewController {
     
     @IBAction func Button4(_ sender: UIButton) {
         grammarRules = """
-        Program         ::= ProgramHead DeclarePart ProgramBody DOT
+        Program         ::= ProgramHead DeclarePart ProgramBody
         
         ProgramHead     ::= PROGRAM ProgramName
         ProgramName     ::= ID
         
-        DeclarePart     ::= TypeDecpart VarDecpart ProcDecpart
+        DeclarePart     ::= TypeDec VarDec ProcDec
         
-        TypeDecpart     ::= ε
-        |   TypeDec
-        TypeDec         ::= TYPE TypeDecList
-        TypeDecList     ::= TypeId EQ TypeDef SEMI TypeDecMore
+        TypeDec         ::= ε
+        |   TypeDeclaration
+        TypeDeclaration ::= TYPE TypeDecList
+        TypeDecList     ::= TypeId EQ TypeName SEMI TypeDecMore
         TypeDecMore     ::= ε
         |   TypeDecList
         TypeId          ::= ID
         
-        TypeDef         ::= BaseType
+        TypeName        ::= BaseType
         |   StructureType
         |   ID
         BaseType        ::= INTEGER
         |   CHAR
         StructureType   ::= ArrayType
         |   RecType
-        ArrayType       ::= ARRAY LMIDPAREN low UNDERANGE top RMIDPAREN OF BaseType
+        ArrayType       ::= ARRAY LMIDPAREN Low UNDERANGE Top RMIDPAREN OF BaseType
         Low             ::= INTC
         Top             ::= INTC
         RecType         ::= RECORD FieldDecList END
@@ -123,21 +124,21 @@ class ViewController: UIViewController {
         IdMore          ::= ε
         |   COMMA IdList
         
-        VarDecpart      ::= ε
-        |   VarDec
-        VarDec          ::= VAR VarDecList
-        VarDecList      ::= TypeDef VarIdList SEMI VarDecMore
+        VarDec          ::= ε
+        |   VarDeclaration
+        VarDeclaration  ::= VAR VarDecList
+        VarDecList      ::= TypeName VarIdList SEMI VarDecMore
         VarDecMore      ::= ε
         |   VarDecList
         VarIdList       ::= ID VarIdMore
         VarIdMore       ::= ε
         |   COMMA VarIdList
         
-        ProcDecpart     ::= ε
-        |   ProcDec
-        ProcDec         ::= PROCEDURE ProcName LPAREN ParamList RPAREN SEMI ProcDecPart ProcBody ProcDecMore
+        ProcDec         ::= ε
+        |   ProcDeclaration
+        ProcDeclaration ::= PROCEDURE ProcName LPAREN ParamList RPAREN SEMI ProcDecPart ProcBody ProcDecMore
         ProcDecMore     ::= ε
-        |   ProcDec
+        |   ProcDeclaration
         ProcName        ::= ID
         
         ParamList       ::= ε
@@ -145,8 +146,8 @@ class ViewController: UIViewController {
         ParamDecList    ::= Param ParamMore
         ParamMore       ::= ε
         |   SEMI ParamDecList
-        Param           ::= TypeDef FormList
-        |   VAR TypeDef FormList
+        Param           ::= TypeName FormList
+        |   VAR TypeName FormList
         FormList        ::= ID FidMore
         FidMore         ::= ε
         |   COMMA FormList
@@ -178,7 +179,7 @@ class ViewController: UIViewController {
         InputStm        ::= READ LPAREN Invar RPAREN
         Invar           ::= ID
         OutputStm       ::= WRITE LPAREN Exp RPAREN
-        ReturnStm       ::= RETURN
+        ReturnStm       ::= RETURN LPAREN Exp RPAREN
         
         CallStmRest     ::= LPAREN ActParamList RPAREN
         ActParamList    ::= ε
@@ -222,11 +223,17 @@ class ViewController: UIViewController {
     
     @IBAction func Button5(_ sender: UIButton) {
         let predictCalculation = PredictSetCalculation.init(text: grammarRules)
+        ProductionList = predictCalculation.showProductionList()
         LLTable = predictCalculation.showTable()
-        tempText = ""
-        for line in LLTable {
+        tempText = "\t"
+        for t in TerminalType.allCases {
+            tempText += "|" + t.rawValue
+        }
+        tempText += "\n"
+        for (i, line) in LLTable.enumerated() {
+            tempText += "\(NonTerminalType.allCases[i])"
             for word in line {
-                tempText += String(word) + "\t"
+                tempText += "|" + String(word)
             }
             tempText += "\n"
         }
@@ -234,6 +241,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Button6(_ sender: UIButton) {
+        let syntaxparser = SyntaxParser.init(Tokens: Tokens, ProductionList: ProductionList, LLTable: LLTable)
+        tempText = syntaxparser.showTree()
+        TextView.text = tempText
     }
     
     @IBAction func Button7(_ sender: UIButton) {
