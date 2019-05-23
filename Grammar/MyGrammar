@@ -1,4 +1,4 @@
-Program         ::= ProgramHead DeclarePart ProgramBody
+Program         ::= ProgramHead DeclarePart ProgramBody DOT
 
 ProgramHead     ::= PROGRAM ProgramName
 ProgramName     ::= ID

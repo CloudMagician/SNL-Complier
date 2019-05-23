@@ -88,7 +88,7 @@ class ViewController: UIViewController {
     
     @IBAction func Button4(_ sender: UIButton) {
         grammarRules = """
-        Program         ::= ProgramHead DeclarePart ProgramBody
+        Program         ::= ProgramHead DeclarePart ProgramBody DOT
         
         ProgramHead     ::= PROGRAM ProgramName
         ProgramName     ::= ID
