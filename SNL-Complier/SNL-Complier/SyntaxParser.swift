@@ -42,11 +42,6 @@ class SyntaxParser {
                             S += ProductionList[i].productionRight.reversed()
                         } else {
                             print("ERROR: Production")
-                            print("ERROR: Production")
-                            print("ERROR: Production")
-                            print("ERROR: Production")
-                            print("ERROR: Production")
-                            print("ERROR: Production")
                             exit(1)
                         }
                     } else if let tt = TerminalType.init(rawValue: s) {
@@ -74,6 +69,7 @@ class SyntaxParser {
                 node.children.append(Node.init(parentNode: node, children: [Node](), tType: t, nType: nil, data: ""))
             } else if let t = NonTerminalType.init(rawValue: i) {
                 node.children.append(Node.init(parentNode: node, children: [Node](), tType: nil, nType: t, data: ""))
+            } else if i == null{
             } else {
                 print("ERROR: Production")
                 exit(-1)
@@ -125,15 +121,32 @@ class SyntaxParser {
         return s
     }
     
-    func showTree() -> String {
-        var s = ""
-        var q = [Node]()
-        q.append(root!)
-        while !q.isEmpty {
-            s += showNode(node: q.first!)
-            q += q.first!.children
-            q.remove(at: 0)
+    func getShowNode(lftstr : String, append : String, node : Node) -> String {
+        var b = append
+        if let t = node.tType {
+            b += t.rawValue
+        } else if let t = node.nType {
+            b += t.rawValue
         }
-        return s
+        if node.data != "" {
+            b += "(" + node.data + ")"
+        }
+        b += "\n"
+        
+        if node.children.count > 0 {
+            for (i, child) in node.children.enumerated() {
+                if i == node.children.count - 1 {
+                    b += lftstr + getShowNode(lftstr: lftstr, append: "|-", node: child)
+                } else {
+                    b += lftstr + getShowNode(lftstr: lftstr + "| ", append: "|-", node: child)
+                }
+            }
+        }
+        
+        return b
+    }
+    
+    func showTree() -> String {
+        return getShowNode(lftstr: "", append: "", node: root!)
     }
 }

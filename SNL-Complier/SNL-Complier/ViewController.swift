@@ -78,13 +78,11 @@ class ViewController: UIViewController {
         let lex = LexcialAnalyzer()
         lex.scan(codes)
         Tokens = lex.showTokens()
-        tempText = "\(MyTools.showTable(text: "TYPE"))\(MyTools.showTable(text: "DATA"))\(MyTools.showTable(text: "LINE"))COLUMN\n"
+        var table = TextTable.init(columns: [TextTableColumn(header: "TYPE"), TextTableColumn(header: "DATA"),TextTableColumn(header: "LINE"),TextTableColumn(header: "COLUMN")])
         for token in Tokens {
-            tempText += "\(MyTools.showTable(text: token.type.rawValue))"
-            tempText += "\(MyTools.showTable(text: token.data))"
-            tempText += "\(MyTools.showTable(text: String(token.line)))"
-            tempText += "\(token.column)\n"
+            table.addRow(values: [token.type.rawValue, token.data, String(token.line), String(token.column)])
         }
+        tempText = table.render()
         TextView.text = tempText
     }
     
@@ -225,18 +223,21 @@ class ViewController: UIViewController {
         let predictCalculation = PredictSetCalculation.init(text: grammarRules)
         ProductionList = predictCalculation.showProductionList()
         LLTable = predictCalculation.showTable()
-        tempText = "\t"
+        var ttCs = [TextTableColumn]()
+        ttCs.append(TextTableColumn(header: ""))
         for t in TerminalType.allCases {
-            tempText += "|" + t.rawValue
+            ttCs.append(TextTableColumn(header: t.rawValue))
         }
-        tempText += "\n"
+        var table = TextTable.init(columns: ttCs)
         for (i, line) in LLTable.enumerated() {
-            tempText += "\(NonTerminalType.allCases[i])"
+            var lineword = [String]()
+            lineword.append(NonTerminalType.allCases[i].rawValue)
             for word in line {
-                tempText += "|" + String(word)
+                lineword.append(String(word))
             }
-            tempText += "\n"
+            table.addRow(values: lineword)
         }
+        tempText = table.render()
         TextView.text = tempText
     }
     
@@ -268,11 +269,11 @@ class ViewController: UIViewController {
         - 标识符：\t\t\t( ID )
         - 保留字：\t\t\t(它是标识符的子集, if,repeat,read,write，…)
         - 无符号整数：\t\t( INTC )
-        - 单字符分界符：\t\t( + , - , * , / , < ,= ,( , ) , [ , ] , . , ; , EOF ,空白字符 )
-        - 双字符分界符：\t\t( := )
-        - 注释头符：\t\t\t( { )
+        - 单字符分界符：\t( + , - , * , / , < ,= ,( , ) , [ , ] , . , ; , EOF ,空白字符 )
+        - 双字符分界符：\t( := )
+        - 注释头符：\t\t( { )
         - 注释结束符：\t\t( } )
-        - 字符起始和结束符：\t( ‘ )
+        - 字符起始和结束符：( ‘ )
         - 数组下标界限符：\t( .. )
         
         

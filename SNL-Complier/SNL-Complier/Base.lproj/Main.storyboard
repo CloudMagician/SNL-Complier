@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_5" orientation="portrait">
+    <device id="ipad10_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,41 +15,41 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SNL_Complier" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rq3-w3-hJv">
-                                <rect key="frame" x="20" y="64" width="374" height="778"/>
+                                <rect key="frame" x="20" y="40" width="794" height="1052"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9xQ-ok-Hg4" userLabel="Button Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="794" height="30"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="saN-Mz-2To">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="397" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7t4-fM-Vpx">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="99.5" height="30"/>
                                                         <state key="normal" title="概要说明"/>
                                                         <connections>
                                                             <action selector="Button1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H3K-zO-3I9"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0l-mv-6UE">
-                                                        <rect key="frame" x="96" y="0.0" width="86" height="30"/>
+                                                        <rect key="frame" x="99.5" y="0.0" width="99" height="30"/>
                                                         <state key="normal" title="SNL代码"/>
                                                         <connections>
                                                             <action selector="Button2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fSl-WI-OGI"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJB-sl-MsL">
-                                                        <rect key="frame" x="192" y="0.0" width="86" height="30"/>
+                                                        <rect key="frame" x="198.5" y="0.0" width="99.5" height="30"/>
                                                         <state key="normal" title="词法分析"/>
                                                         <connections>
                                                             <action selector="Button3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Zc-HI-kkS"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBH-hr-bah">
-                                                        <rect key="frame" x="288" y="0.0" width="86" height="30"/>
+                                                        <rect key="frame" x="298" y="0.0" width="99" height="30"/>
                                                         <state key="normal" title="文法规则"/>
                                                         <connections>
                                                             <action selector="Button4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w8N-14-sH2"/>
@@ -61,31 +61,31 @@
                                                 <variation key="heightClass=regular-widthClass=compact" spacing="10"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="maN-mt-Ccm">
-                                                <rect key="frame" x="0.0" y="30" width="374" height="30"/>
+                                                <rect key="frame" x="397" y="0.0" width="397" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5q-MN-v3T">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86" height="30"/>
-                                                        <state key="normal" title="Predict集"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="99.5" height="30"/>
+                                                        <state key="normal" title="LL1矩阵"/>
                                                         <connections>
                                                             <action selector="Button5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cw2-5T-R7Q"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUu-GL-hsX">
-                                                        <rect key="frame" x="96" y="0.0" width="86" height="30"/>
+                                                        <rect key="frame" x="99.5" y="0.0" width="99" height="30"/>
                                                         <state key="normal" title="语法分析"/>
                                                         <connections>
                                                             <action selector="Button6:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O6N-gh-88N"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wnf-Ly-fYu">
-                                                        <rect key="frame" x="192" y="0.0" width="86" height="30"/>
+                                                        <rect key="frame" x="198.5" y="0.0" width="99.5" height="30"/>
                                                         <state key="normal" title="语义分析"/>
                                                         <connections>
                                                             <action selector="Button7:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V53-PB-tv6"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZN1-dv-Tun">
-                                                        <rect key="frame" x="288" y="0.0" width="86" height="30"/>
+                                                        <rect key="frame" x="298" y="0.0" width="99" height="30"/>
                                                         <state key="normal" title="目标代码"/>
                                                         <connections>
                                                             <action selector="Button8:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PZU-a6-N8x"/>
@@ -100,13 +100,20 @@
                                         <variation key="heightClass=regular-widthClass=regular" axis="horizontal"/>
                                     </stackView>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="dbs-hf-Poc">
-                                        <rect key="frame" x="0.0" y="70" width="374" height="708"/>
+                                        <rect key="frame" x="0.0" y="40" width="794" height="1012"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" indicatorStyle="white" bouncesZoom="NO" editable="NO" text="TextView" translatesAutoresizingMaskIntoConstraints="NO" id="Rst-jb-yVE">
-                                                <rect key="frame" x="0.0" y="0.0" width="69.666666666666671" height="35.666666666666664"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" indicatorStyle="white" bouncesZoom="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rst-jb-yVE">
+                                                <rect key="frame" x="0.0" y="0.0" width="77.5" height="32"/>
                                                 <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="TextView">
+                                                        <attributes>
+                                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="14" name="CourierNewPSMT"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                         </subviews>

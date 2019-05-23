@@ -12,26 +12,12 @@ class MyTools {
     static func showTable(text : String) -> String {
         var resultText = text
         switch text.count {
-        case 0:
+        case 0,1,2,3:
             resultText += "\t\t\t\t"
-        case 1:
-            resultText += "\t\t\t\t"
-        case 2:
-            resultText += "\t\t\t\t"
-        case 3:
-            resultText += "\t\t\t\t"
-        case 4:
+        case 4,5,6,7:
             resultText += "\t\t\t"
-        case 5:
-            resultText += "\t\t\t"
-        case 6:
+        case 8,9,10,11:
             resultText += "\t\t"
-        case 7:
-            resultText += "\t\t"
-        case 8:
-            resultText += "\t\t"
-        case 9:
-            resultText += "\t"
         default:
             resultText += "\t"
         }

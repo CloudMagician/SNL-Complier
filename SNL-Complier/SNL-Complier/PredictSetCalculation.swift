@@ -54,21 +54,6 @@ class PredictSetCalculation {
             establishFollowSet()
             establishPredictSet()
         }
-        
-//        for i in firstSet.sorted(by: {$0.0.rawValue < $1.0.rawValue}) {
-//            print(i.key)
-//            print(i.value)
-//        }
-//        print("\n\n\n")
-//        for i in followSet.sorted(by: {$0.0.rawValue < $1.0.rawValue}) {
-//            print(i.key)
-//            print(i.value)
-//        }
-//        print("\n\n\n")
-//        for i in predictSet.sorted(by: {$0.0 < $1.0}) {
-//            print(i.key)
-//            print(i.value)
-//        }
     }
     
     func establishFirstSet() {
@@ -105,41 +90,51 @@ class PredictSetCalculation {
             temp = followSet
             for nonTerminal in NonTerminalType.allCases {
                 for production in productionList {
-                    var isNeed = false
+                    var turn = 1
                     var list = [String]()
-                    for (i,word) in production.productionRight.enumerated() {
-                        if word == nonTerminal.rawValue {
-                            isNeed = true
-                            if i == (production.productionRight.count - 1) {
-                                followSet[nonTerminal]! = followSet[nonTerminal]!.union(followSet[production.productionLeft]!)
+                    repeat {
+                        list.removeAll()
+                        var tturn = 0
+                        var isNeed = false
+                        for (i,word) in production.productionRight.enumerated() {
+                            if isNeed {
+                                list.append(word)
                             }
-                        } else if isNeed {
-                            list.append(word)
+                            if word == nonTerminal.rawValue {
+                                tturn += 1
+                                if tturn == turn {
+                                    isNeed = true
+                                    if i == (production.productionRight.count - 1) {
+                                        followSet[nonTerminal]! = followSet[nonTerminal]!.union(followSet[production.productionLeft]!)
+                                    }
+                                }
+                            }
                         }
-                    }
-                    if !list.isEmpty {
-                        var set = Set<String>()
-                        for (i,word) in list.enumerated() {
-                            if let leftWord = NonTerminalType.init(rawValue: word) {
-                                set = set.union(firstSet[leftWord]!)
-                                if firstSet[leftWord]!.contains(null) {
-                                    if i < list.count - 1 {
-                                        set.remove(null)
+                        if !list.isEmpty {
+                            var set = Set<String>()
+                            for (i,word) in list.enumerated() {
+                                if let leftWord = NonTerminalType.init(rawValue: word) {
+                                    set = set.union(firstSet[leftWord]!)
+                                    if firstSet[leftWord]!.contains(null) {
+                                        if i < list.count - 1 {
+                                            set.remove(null)
+                                        }
+                                    } else {
+                                        break
                                     }
                                 } else {
+                                    set.insert(word)
                                     break
                                 }
-                            } else {
-                                set.insert(word)
-                                break
                             }
+                            if set.contains(null) {
+                                followSet[nonTerminal]! = followSet[nonTerminal]!.union(followSet[production.productionLeft]!)
+                                set.remove(null)
+                            }
+                            followSet[nonTerminal]! = followSet[nonTerminal]!.union(set)
                         }
-                        if set.contains(null) {
-                            followSet[nonTerminal]! = followSet[nonTerminal]!.union(followSet[production.productionLeft]!)
-                            set.remove(null)
-                        }
-                        followSet[nonTerminal]! = followSet[nonTerminal]!.union(set)
-                    }
+                        turn += 1
+                    } while list.contains(nonTerminal.rawValue)
                 }
             }
         }
