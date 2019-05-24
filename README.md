@@ -1,12 +1,12 @@
 # SNL-Complier
 
-* 参考：
-   1. [界面灵感](https://github.com/LiuChangFreeman/C--Compiler)
-   2. [文法修正、集合求解参照](https://github.com/QiaoSteven/SNL-Compiler)
-   3. [LL1的DFS生成参照](https://github.com/code4lala/snl)
-   4. [BUG修改参照](https://github.com/Gwzlchn/SNL-Compiler)
-   5. [画树形参照]()
-   6. [资料参照](https://github.com/YouthLin/SNL-Compiler)
+参考：(程序猿的事那能叫抄吗？那叫借用灵感！)
+1. [界面灵感](https://github.com/LiuChangFreeman/C--Compiler)
+2. [文法修正、集合求解参照](https://github.com/QiaoSteven/SNL-Compiler)
+3. [LL1的DFS生成参照](https://github.com/code4lala/snl)
+4. [BUG修改参照](https://github.com/Gwzlchn/SNL-Compiler)
+5. [画树形参照]()
+6. [资料参照](https://github.com/YouthLin/SNL-Compiler)
 
 ## SNL语言的特点
 
