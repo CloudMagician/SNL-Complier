@@ -1,4 +1,13 @@
 # SNL-Complier
+
+* 参考：
+   1. [界面灵感](https://github.com/LiuChangFreeman/C--Compiler)
+   2. [文法修正、集合求解参照](https://github.com/QiaoSteven/SNL-Compiler)
+   3. [LL1的DFS生成参照](https://github.com/code4lala/snl)
+   4. [BUG修改参照](https://github.com/Gwzlchn/SNL-Compiler)
+   5. [画树形参照]()
+   6. [资料参照](https://github.com/YouthLin/SNL-Compiler)
+
 ## SNL语言的特点
 
 SNL(Small Nested Language)语言是我们自行定义的教学模型语言，它是一种类PASCAL的“高级”程序设计语言。SNL语言的数据结构比较丰富，除了整型、字符型等简单数据类型外，还有数组、记录等结构数据类型，过程允许嵌套定义，允许递归调用。SNL语言基本上包含了高级程序设计语言的所有常用的成分，具备了高级程序设计语言的基本特征，实现SNL的编译器，可以涉及到绝大多数编译技术。通过对SNL语言编译程序的学习，我们可以更加深入更加全面的掌握编译程序的构造原理。但为了教学方便起见，略去了高级程序设计语言的一些复杂成分，如文件、集合、指针的操作等。
