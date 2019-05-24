@@ -16,39 +16,11 @@ class LexcialAnalyzer {
     // Tokens
     var Tokens = [Token]()
     
-    // 去掉注释
-    func removeComments(_ codes: String) -> String {
-        let regex = try! NSRegularExpression(pattern: "\\{.*?\\}", options: [])
-        let result = regex.stringByReplacingMatches(in: codes, options: [], range: NSRange(location: 0, length: codes.count), withTemplate: " ")
-        return result
-    }
-    
-    // 判别单词
-    func discriminateWord(_ word: String) -> Token {
-        currentColumn += 1
-        var data = word
-        for (key, value) in reservedWord {
-            if word == key {
-                return Token.init(type: value, data: "", line: currentLine, column: currentColumn)
-            }
-        }
-        for (key, value) in discriminateType {
-            let regex = try! NSRegularExpression(pattern: key, options: [])
-            let resultRange = regex.rangeOfFirstMatch(in: data, options: [], range: NSRange(location: 0, length: data.count))
-            if resultRange == NSRange(location: 0, length: data.count) {
-                if value == .CHARC {
-                    data = String(data[data.index(after: data.startIndex)])
-                }
-                return Token.init(type: value, data: data, line: currentLine, column: currentColumn)
-            }
-        }
-        return Token.init(type: .ERROR, data: word, line: currentLine, column: currentColumn)
-    }
-    
     // 扫描得出Token
-    func scan(_ codes: String) {
+    func scan(codes: String) {
         currentLine = 0
         currentColumn = 0
+        Tokens.removeAll()
         var tempString : String = ""
         var tempCharacter : Character = " "
         let codess = removeComments(codes)
@@ -172,6 +144,35 @@ class LexcialAnalyzer {
                 }
             }
         }
+    }
+    
+    // 去掉注释
+    func removeComments(_ codes: String) -> String {
+        let regex = try! NSRegularExpression(pattern: "\\{.*?\\}", options: [])
+        let result = regex.stringByReplacingMatches(in: codes, options: [], range: NSRange(location: 0, length: codes.count), withTemplate: " ")
+        return result
+    }
+    
+    // 判别单词
+    func discriminateWord(_ word: String) -> Token {
+        currentColumn += 1
+        var data = word
+        for (key, value) in reservedWord {
+            if word == key {
+                return Token.init(type: value, data: "", line: currentLine, column: currentColumn)
+            }
+        }
+        for (key, value) in discriminateType {
+            let regex = try! NSRegularExpression(pattern: key, options: [])
+            let resultRange = regex.rangeOfFirstMatch(in: data, options: [], range: NSRange(location: 0, length: data.count))
+            if resultRange == NSRange(location: 0, length: data.count) {
+                if value == .CHARC {
+                    data = String(data[data.index(after: data.startIndex)])
+                }
+                return Token.init(type: value, data: data, line: currentLine, column: currentColumn)
+            }
+        }
+        return Token.init(type: .ERROR, data: word, line: currentLine, column: currentColumn)
     }
     
     func showTokens() -> [Token] {
