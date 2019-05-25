@@ -16,6 +16,7 @@ class SyntaxParser {
     var Ps = [Production]()
     var PsIndex = 0
     var root : Node?
+    var errorString : String?
     
     init(Tokens : [Token], ProductionList : [Production], LLTable : [[Int]]) {
         self.Tokens = Tokens
@@ -27,6 +28,9 @@ class SyntaxParser {
     }
     
     func productionListAnalyze() {
+        if let _ = errorString {
+            return
+        }
         var S = [String]()
         if let start = ProductionList.first {
             S.append(start.productionLeft.rawValue)
@@ -41,29 +45,32 @@ class SyntaxParser {
                             S.removeLast(1)
                             S += ProductionList[i].productionRight.reversed()
                         } else {
-                            print("ERROR: Production")
-                            exit(1)
+                            errorString = "ERROR_Production: Tokens[\(index)] AND \(s) HAVE NO PRODUCTION"
+                            return
                         }
                     } else if let tt = TerminalType.init(rawValue: s) {
                         if Tokens[index].type == tt {
                             S.removeLast(1)
                             index += 1
                         } else {
-                            print("ERROR: NOT Match")
-                            exit(-1)
+                            errorString = "ERROR_Match: Tokens[\(index)] AND \(s) DO NOT MATCH"
+                            return
                         }
                     } else {
                         S.removeLast(1)
                     }
                 } else {
-                    print("ERROR: Tokens")
-                    exit(-1)
+                    errorString = "ERROR_Tokens: Tokens NOT ENOUGH"
+                    return
                 }
             }
         }
     }
     
     func dfsBuildTree(node : Node) {
+        if let _ = errorString {
+            return
+        }
         for i in Ps[PsIndex].productionRight {
             if let t = TerminalType.init(rawValue: i) {
                 node.children.append(Node.init(parentNode: node, children: [Node](), tType: t, nType: nil, data: ""))
@@ -71,8 +78,8 @@ class SyntaxParser {
                 node.children.append(Node.init(parentNode: node, children: [Node](), tType: nil, nType: t, data: ""))
             } else if i == null{
             } else {
-                print("ERROR: Production")
-                exit(-1)
+                errorString = "ERROR_Production: PRODUCTION ERROR"
+                return
             }
         }
         PsIndex += 1
@@ -87,6 +94,9 @@ class SyntaxParser {
     }
     
     func buildTree() {
+        if let _ = errorString {
+            return
+        }
         if Ps.count < 1 {
             return
         }
@@ -97,8 +107,8 @@ class SyntaxParser {
             } else if let t = NonTerminalType.init(rawValue: i) {
                 root!.children.append(Node.init(parentNode: root, children: [Node](), tType: nil, nType: t, data: ""))
             } else {
-                print("ERROR: Production")
-                exit(-1)
+                errorString = "ERROR_Production: PRODUCTION ERROR"
+                return
             }
         }
         TokensIndex = 0
@@ -110,18 +120,7 @@ class SyntaxParser {
         }
     }
     
-    func showNode(node : Node) -> String {
-        var s = ""
-        if let t = node.tType {
-            s += t.rawValue
-        } else if let t = node.nType {
-            s += t.rawValue
-        }
-        s += "_\(node.data)\t"
-        return s
-    }
-    
-    func getShowNode(lftstr : String, append : String, node : Node) -> String {
+    func showNode(lftstr : String, append : String, node : Node) -> String {
         var b = append
         if let t = node.tType {
             b += t.rawValue
@@ -136,9 +135,9 @@ class SyntaxParser {
         if node.children.count > 0 {
             for (i, child) in node.children.enumerated() {
                 if i == node.children.count - 1 {
-                    b += lftstr + getShowNode(lftstr: lftstr, append: "|-", node: child)
+                    b += lftstr + showNode(lftstr: lftstr, append: "|-", node: child)
                 } else {
-                    b += lftstr + getShowNode(lftstr: lftstr + "| ", append: "|-", node: child)
+                    b += lftstr + showNode(lftstr: lftstr + "| ", append: "|-", node: child)
                 }
             }
         }
@@ -147,6 +146,10 @@ class SyntaxParser {
     }
     
     func showTree() -> String {
-        return getShowNode(lftstr: "", append: "", node: root!)
+        if let e = errorString {
+            return e
+        } else {
+            return showNode(lftstr: "", append: "", node: root!)
+        }
     }
 }
