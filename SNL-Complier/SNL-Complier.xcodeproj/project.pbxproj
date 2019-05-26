@@ -14,7 +14,6 @@
 		B00891B622825AD400888484 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B00891B422825AD400888484 /* LaunchScreen.storyboard */; };
 		B00891C122825AD500888484 /* SNL_ComplierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00891C022825AD500888484 /* SNL_ComplierTests.swift */; };
 		B00891CC22825AD500888484 /* SNL_ComplierUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00891CB22825AD500888484 /* SNL_ComplierUITests.swift */; };
-		B0198B80228B16E60023A02E /* MyTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0198B7F228B16E60023A02E /* MyTools.swift */; };
 		B02E2422228FE1D200D303E7 /* PredictSetCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02E2421228FE1D200D303E7 /* PredictSetCalculation.swift */; };
 		B04D1A6622951E3C00C85AD1 /* SyntaxParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D1A6522951E3C00C85AD1 /* SyntaxParser.swift */; };
 		B084050922962C7C0014D2CD /* TextTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B084050822962C7C0014D2CD /* TextTable.swift */; };
@@ -53,7 +52,6 @@
 		B00891C722825AD500888484 /* SNL-ComplierUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SNL-ComplierUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00891CB22825AD500888484 /* SNL_ComplierUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNL_ComplierUITests.swift; sourceTree = "<group>"; };
 		B00891CD22825AD500888484 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B0198B7F228B16E60023A02E /* MyTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTools.swift; sourceTree = "<group>"; };
 		B02E2421228FE1D200D303E7 /* PredictSetCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictSetCalculation.swift; sourceTree = "<group>"; };
 		B04D1A6522951E3C00C85AD1 /* SyntaxParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntaxParser.swift; sourceTree = "<group>"; };
 		B084050822962C7C0014D2CD /* TextTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTable.swift; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 				B02E2421228FE1D200D303E7 /* PredictSetCalculation.swift */,
 				B04D1A6522951E3C00C85AD1 /* SyntaxParser.swift */,
 				B084050822962C7C0014D2CD /* TextTable.swift */,
-				B0198B7F228B16E60023A02E /* MyTools.swift */,
 			);
 			path = "SNL-Complier";
 			sourceTree = "<group>";
@@ -280,7 +277,6 @@
 				B02E2422228FE1D200D303E7 /* PredictSetCalculation.swift in Sources */,
 				B04D1A6622951E3C00C85AD1 /* SyntaxParser.swift in Sources */,
 				B0CFB8372282ABD80004DEA4 /* LexcialAnalyzer.swift in Sources */,
-				B0198B80228B16E60023A02E /* MyTools.swift in Sources */,
 				B084050922962C7C0014D2CD /* TextTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

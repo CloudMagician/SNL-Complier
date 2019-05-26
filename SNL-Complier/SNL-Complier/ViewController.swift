@@ -22,14 +22,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var TextView: UITextView!
     
     @IBAction func Button1(_ sender: UIButton) {
+        TextView.isEditable = false
         TextView.text = introductionText
     }
     
     @IBAction func Button2(_ sender: UIButton) {
+        if !TextView.isEditable {
+            TextView.isEditable = true
+        } else {
+            codes = TextView.text
+            TextView.isEditable = false
+        }
         TextView.text = codes
+        Button3.isUserInteractionEnabled = true
+        Button3.alpha = 1
     }
     
+    @IBOutlet weak var Button3: UIButton!
     @IBAction func Button3(_ sender: UIButton) {
+        TextView.isEditable = false
         let lexcialAnalyzer = LexcialAnalyzer()
         lexcialAnalyzer.scan(codes: codes)
         Tokens = lexcialAnalyzer.showTokens()
@@ -42,10 +53,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Button4(_ sender: UIButton) {
+        TextView.isEditable = false
         TextView.text = grammarRules
+        if Button3.isUserInteractionEnabled {
+            Button5.isUserInteractionEnabled = true
+            Button5.alpha = 1
+        }
     }
     
+    @IBOutlet weak var Button5: UIButton!
     @IBAction func Button5(_ sender: UIButton) {
+        TextView.isEditable = false
         let predictCalculation = PredictSetCalculation.init(text: grammarRules)
         ProductionList = predictCalculation.showProductionList()
         LLTable = predictCalculation.showTable()
@@ -65,18 +83,30 @@ class ViewController: UIViewController {
         }
         tempText = table.render()
         TextView.text = tempText
+        Button6.isUserInteractionEnabled = true
+        Button6.alpha = 1
     }
     
+    @IBOutlet weak var Button6: UIButton!
     @IBAction func Button6(_ sender: UIButton) {
+        TextView.isEditable = false
         let syntaxParser = SyntaxParser.init(Tokens: Tokens, ProductionList: ProductionList, LLTable: LLTable)
         tempText = syntaxParser.showTree()
         TextView.text = tempText
+        Button7.isUserInteractionEnabled = true
+        Button7.alpha = 1
     }
     
+    @IBOutlet weak var Button7: UIButton!
     @IBAction func Button7(_ sender: UIButton) {
+        TextView.isEditable = false
+        Button8.isUserInteractionEnabled = true
+        Button8.alpha = 1
     }
     
+    @IBOutlet weak var Button8: UIButton!
     @IBAction func Button8(_ sender: UIButton) {
+        TextView.isEditable = false
     }
     
     override func viewDidLoad() {
@@ -84,6 +114,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         TextView.sizeThatFits(CGSize.init(width: TextView.frame.size.width, height: TextView.frame.size.height))
         introductionText = """
+        该程序作为吉林大学编译原理的实现，简单实现了从词法分析、语法分析、语义分析和生成中间代码的过程。
+        目前该程序仅可以修改源代码来查看相应输出（点击按钮“SNL代码按钮”即可修改，再次点击保存代码），后续功能尽情期待。
+        代码详见：https://github.com/CloudMagician/SNL-Complier
+        
+        
         SNL(Small Nested Language)语言是我们自行定义的教学模型语言，它是一种类PASCAL的“高级”程序设计语言。
         SNL语言的数据结构比较丰富，除了整型、字符型等简单数据类型外，还有数组、记录等结构数据类型，过程允许嵌套定义，允许递归调用。
         SNL语言基本上包含了高级程序设计语言的所有常用的成分，具备了高级程序设计语言的基本特征，实现SNL的编译器，
