@@ -148,7 +148,7 @@ class LexcialAnalyzer {
     
     // 去掉注释
     func removeComments(_ codes: String) -> String {
-        let regex = try! NSRegularExpression(pattern: "\\{.*?\\}", options: [])
+        let regex = try! NSRegularExpression(pattern: "\\{[\\s\\S]*?\\}", options: [])
         let result = regex.stringByReplacingMatches(in: codes, options: [], range: NSRange(location: 0, length: codes.count), withTemplate: " ")
         return result
     }
