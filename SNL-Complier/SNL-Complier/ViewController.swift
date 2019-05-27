@@ -32,6 +32,15 @@ class ViewController: UIViewController {
         } else {
             codes = TextView.text
             TextView.isEditable = false
+            Button5.isUserInteractionEnabled = false
+            Button5.alpha = 0.4
+            Button6.isUserInteractionEnabled = false
+            Button6.alpha = 0.4
+            Button7.isUserInteractionEnabled = false
+            Button7.alpha = 0.4
+            Button8.isUserInteractionEnabled = false
+            Button8.alpha = 0.4
+            
         }
         TextView.text = codes
         Button3.isUserInteractionEnabled = true
@@ -330,13 +339,6 @@ class ViewController: UIViewController {
         MultOp          ::= TIMES
         |   OVER
         """
-        
-        let lexcialAnalyzer = LexcialAnalyzer()
-        lexcialAnalyzer.scan(codes: codes)
-        Tokens = lexcialAnalyzer.showTokens()
-        let predictCalculation = PredictSetCalculation.init(text: grammarRules)
-        ProductionList = predictCalculation.showProductionList()
-        LLTable = predictCalculation.showTable()
         
         TextView.text = introductionText
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LexcialAnalyzer {    
+class LexcialAnalyzer {
     // 当前行列
     var currentLine = 0
     var currentColumn = 0
@@ -30,7 +30,7 @@ class LexcialAnalyzer {
             currentColumn = 0
             let words = line.components(separatedBy: " ")
             for word in words {
-                if word == "" {
+                if word == "" || word == " " {
                     continue
                 }
                 tempString = ""
