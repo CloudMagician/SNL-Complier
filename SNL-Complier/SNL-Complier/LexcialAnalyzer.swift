@@ -30,12 +30,13 @@ class LexcialAnalyzer {
             currentColumn = 0
             let words = line.components(separatedBy: " ")
             for word in words {
-                if word == "" || word == " " {
+                let wd = word.trimmingCharacters(in: [" ","\t"])
+                if wd == "" || wd == " " {
                     continue
                 }
                 tempString = ""
                 tempCharacter = " "
-                label: for c in word {
+                label: for c in wd {
                     switch c {
                     case ":":
                         if tempString != "" {
