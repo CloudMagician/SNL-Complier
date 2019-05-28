@@ -57,9 +57,9 @@ class ViewController: UIViewController {
         let lexcialAnalyzer = LexcialAnalyzer()
         lexcialAnalyzer.scan(codes: codes)
         Tokens = lexcialAnalyzer.showTokens()
-        var table = TextTable.init(columns: [TextTableColumn(header: "TYPE"), TextTableColumn(header: "DATA"),TextTableColumn(header: "LINE"),TextTableColumn(header: "COLUMN")])
-        for token in Tokens {
-            table.addRow(values: [token.type.rawValue, token.data, String(token.line), String(token.column)])
+        var table = TextTable.init(columns: [TextTableColumn(header: "INDEX"), TextTableColumn(header: "TYPE"), TextTableColumn(header: "DATA"),TextTableColumn(header: "LINE"),TextTableColumn(header: "COLUMN")])
+        for (i, token) in Tokens.enumerated() {
+            table.addRow(values: [i ,token.type.rawValue, token.data, String(token.line), String(token.column)])
         }
         tempText = table.render()
         TextView.text = tempText
