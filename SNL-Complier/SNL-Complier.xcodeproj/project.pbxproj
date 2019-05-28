@@ -16,6 +16,7 @@
 		B00891CC22825AD500888484 /* SNL_ComplierUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00891CB22825AD500888484 /* SNL_ComplierUITests.swift */; };
 		B02E2422228FE1D200D303E7 /* PredictSetCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02E2421228FE1D200D303E7 /* PredictSetCalculation.swift */; };
 		B04D1A6622951E3C00C85AD1 /* SyntaxParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04D1A6522951E3C00C85AD1 /* SyntaxParser.swift */; };
+		B067D551229C056C0048315A /* SemanticAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067D550229C056C0048315A /* SemanticAnalyzer.swift */; };
 		B084050922962C7C0014D2CD /* TextTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B084050822962C7C0014D2CD /* TextTable.swift */; };
 		B0CFB8372282ABD80004DEA4 /* LexcialAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CFB8362282ABD80004DEA4 /* LexcialAnalyzer.swift */; };
 		B0D27AD322916E9C003AEE88 /* TypeDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D27AD222916E9C003AEE88 /* TypeDefinition.swift */; };
@@ -54,6 +55,7 @@
 		B00891CD22825AD500888484 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B02E2421228FE1D200D303E7 /* PredictSetCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictSetCalculation.swift; sourceTree = "<group>"; };
 		B04D1A6522951E3C00C85AD1 /* SyntaxParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntaxParser.swift; sourceTree = "<group>"; };
+		B067D550229C056C0048315A /* SemanticAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanticAnalyzer.swift; sourceTree = "<group>"; };
 		B084050822962C7C0014D2CD /* TextTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTable.swift; sourceTree = "<group>"; };
 		B0CFB8362282ABD80004DEA4 /* LexcialAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexcialAnalyzer.swift; sourceTree = "<group>"; };
 		B0D27AD222916E9C003AEE88 /* TypeDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDefinition.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				B0CFB8362282ABD80004DEA4 /* LexcialAnalyzer.swift */,
 				B02E2421228FE1D200D303E7 /* PredictSetCalculation.swift */,
 				B04D1A6522951E3C00C85AD1 /* SyntaxParser.swift */,
+				B067D550229C056C0048315A /* SemanticAnalyzer.swift */,
 				B084050822962C7C0014D2CD /* TextTable.swift */,
 			);
 			path = "SNL-Complier";
@@ -274,6 +277,7 @@
 				B00891AE22825AD300888484 /* ViewController.swift in Sources */,
 				B0D27AD322916E9C003AEE88 /* TypeDefinition.swift in Sources */,
 				B00891AC22825AD300888484 /* AppDelegate.swift in Sources */,
+				B067D551229C056C0048315A /* SemanticAnalyzer.swift in Sources */,
 				B02E2422228FE1D200D303E7 /* PredictSetCalculation.swift in Sources */,
 				B04D1A6622951E3C00C85AD1 /* SyntaxParser.swift in Sources */,
 				B0CFB8372282ABD80004DEA4 /* LexcialAnalyzer.swift in Sources */,

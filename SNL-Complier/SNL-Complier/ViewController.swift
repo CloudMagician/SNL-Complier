@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var Tokens = [Token]()
     var ProductionList = [Production]()
     var LLTable = [[Int]]()
+    var Root : Node?
     
     @IBOutlet weak var ScrollView: UIScrollView!
     @IBOutlet weak var TextView: UITextView!
@@ -40,7 +41,10 @@ class ViewController: UIViewController {
             Button7.alpha = 0.4
             Button8.isUserInteractionEnabled = false
             Button8.alpha = 0.4
-            
+            Tokens.removeAll()
+            ProductionList.removeAll()
+            LLTable.removeAll()
+            Root = nil
         }
         TextView.text = codes
         Button3.isUserInteractionEnabled = true
@@ -101,6 +105,7 @@ class ViewController: UIViewController {
         TextView.isEditable = false
         let syntaxParser = SyntaxParser.init(Tokens: Tokens, ProductionList: ProductionList, LLTable: LLTable)
         tempText = syntaxParser.showTree()
+        Root = syntaxParser.showNode()
         TextView.text = tempText
         Button7.isUserInteractionEnabled = true
         Button7.alpha = 1

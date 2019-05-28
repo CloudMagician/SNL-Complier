@@ -120,7 +120,11 @@ class SyntaxParser {
         }
     }
     
-    func showNode(lftstr : String, append : String, node : Node) -> String {
+    func showNode() -> Node? {
+        return root
+    }
+    
+    func getNode(lftstr : String, append : String, node : Node) -> String {
         var b = append
         if let t = node.tType {
             b += t.rawValue
@@ -135,9 +139,9 @@ class SyntaxParser {
         if node.children.count > 0 {
             for (i, child) in node.children.enumerated() {
                 if i == node.children.count - 1 {
-                    b += lftstr + showNode(lftstr: lftstr, append: "|-", node: child)
+                    b += lftstr + getNode(lftstr: lftstr, append: "    |-", node: child)
                 } else {
-                    b += lftstr + showNode(lftstr: lftstr + "| ", append: "|-", node: child)
+                    b += lftstr + getNode(lftstr: lftstr + "    | ", append: "    |-", node: child)
                 }
             }
         }
@@ -149,7 +153,7 @@ class SyntaxParser {
         if let e = errorString {
             return e
         } else {
-            return showNode(lftstr: "", append: "", node: root!)
+            return getNode(lftstr: "", append: "", node: root!)
         }
     }
 }
